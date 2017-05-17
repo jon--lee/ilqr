@@ -5,7 +5,7 @@ import IPython
 from controller import LQController
 
 """
-    Turn of the control clipping in OpenAI gym
+    Turn off the control clipping in OpenAI gym
     in order for this to work
 """
 

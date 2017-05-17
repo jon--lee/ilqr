@@ -22,9 +22,6 @@ def breakup_c(c, n):
     return c[:n], c[n:]
 
 
-
-
-
 class LQController():
 
     def __init__(self, T, n, d, Cs, Fs, cs, fs):
@@ -72,36 +69,6 @@ class LQController():
     def control(self, x, t, x_t = 0, u_t = 0):
         contr = mul(self.Ks[t], x - x_t) + self.ks[t] + u_t
         return contr
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    T = 50
-    n = 2
-    d = 1
-    Fs = [np.array([[1, 1, 0], [0, 1, 1]])] * T
-    Cs = [np.array([[1, 0, 0], 
-                    [0, 1, 0],
-                    [0, 0, 1]])] * T
-
-    fs = [np.zeros(n)] * T
-    cs = [np.zeros(n + d)] * T
-
-    contr = LQController(T, n, d, Cs, Fs, cs, fs)
-    x = np.array([15, 25])
-    for t in range(T - 1):
-        print x
-        u = contr.control(x, t)
-        print u
-        x = mul(Fs[t], np.hstack((x, u))) + fs[t]
-
-    print x
-
 
 
 
